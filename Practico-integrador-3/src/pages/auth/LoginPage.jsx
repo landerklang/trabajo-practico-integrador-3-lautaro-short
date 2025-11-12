@@ -9,13 +9,13 @@ export const LoginPage = () => {
   });
 
   const handleLogin = () => {
-    logged = localStorage.getItem("isLogged", "true");
+    logged = localStorage.setItem("isLogged", "true");
   };
   return (
     <form
-      onSubmit={(event) => {
-        handleSubmit(event, navigate("/Home"), handleLogin());
-      }}
+      onSubmit={(event) =>
+        handleSubmit(event, navigate("/Home"), handleLogin())
+      }
     >
       <div>
         <input

@@ -12,7 +12,7 @@ export const RegisterPage = () => {
     dni: "",
   });
   const handleLogin = () => {
-    logged = localStorage.getItem("isLogged", "true");
+    logged = localStorage.setItem("isLogged", "true");
   };
   return (
     <form
