@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router ";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const handleLogout = () => {
@@ -8,7 +8,7 @@ export const Navbar = () => {
   };
   return (
     <nav>
-      <Link to="/home">Home</Link>
+      <Link to="/Home">Home</Link>
       <Link to="/Tasks">Tasks</Link>
       <Link to="/Profile">Profile</Link>
       <Link onClick={handleLogout}>Logout</Link>
