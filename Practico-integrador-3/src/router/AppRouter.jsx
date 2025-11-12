@@ -1,15 +1,15 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { PublicRoutes } from "./PublicRouter.jsx";
 import { PrivateRoutes } from "./PrivateRouter.jsx";
-import { LoginPages } from "../pages/auth/LoginPages.jsx";
-import { RegisterPages } from "../pages/auth/RegisterPages.jsx";
+import { LoginPage } from "../pages/auth/LoginPage.jsx";
+import { RegisterPage } from "../pages/auth/RegisterPage.jsx";
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route element={<PublicRoutes />}>
-        <Route path="/Login" element={<LoginPages />} />
-        <Route path="/Register" element={<RegisterPages />} />
+        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/Register" element={<RegisterPage />} />
         <Route path="*" element={<Navigate to="/Login" />} />
         <Route path="/" element={<Navigate to="/Login" />} />
       </Route>
