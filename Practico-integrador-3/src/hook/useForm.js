@@ -16,5 +16,5 @@ export const useForm = (inicialValue) => {
     handleReset();
     console.log(Form);
   };
-  return { Form, handleChange, handleSubmit, handleReset };
+  return { Form, setForm, handleChange, handleSubmit, handleReset };
 };

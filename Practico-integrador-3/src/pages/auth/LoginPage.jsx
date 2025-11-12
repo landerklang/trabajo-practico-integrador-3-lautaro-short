@@ -1,42 +1,68 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hook/useForm.js";
+import { Loading } from "../../components/Loading.jsx";
+import { useState } from "react";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { Form, handleChange, handleSubmit, handleReset } = useForm({
+  const { Form, handleChange, handleReset } = useForm({
     username: "",
     password: "",
   });
+  const [loading, setloading] = useState(false);
 
-  const handleLogin = () => {
-    logged = localStorage.setItem("isLogged", "true");
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setloading(true);
+    try {
+      const res = await fetch("http://localhost:4000/api/login", {
+        method: "POST",
+        body: JSON.stringify(Form),
+        headers: { "Content-type": "application/json" },
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (!data.ok) {
+        return alert(data.message);
+      }
+      logged = localStorage.setItem("isLogged", "true");
+
+      navigate("/Home");
+    } catch (error) {
+      return alert("error al iniciar sesion");
+    } finally {
+      setloading(false);
+    }
   };
   return (
-    <form
-      onSubmit={(event) =>
-        handleSubmit(event, navigate("/Home"), handleLogin())
-      }
-    >
-      <div>
-        <input
-          type="text"
-          name="username"
-          placeholder="nombre de usuario"
-          value={Form.username}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="contraseña"
-          value={Form.password}
-          onChange={handleChange}
-        />
-        <button type="submit" onChange={handleReset}>
-          Iniciar sesion
-        </button>
-      </div>
-      <a href="/Register">Registrarte</a>
-    </form>
+    <main>
+      {loading && <Loading />}
+      <form onSubmit={(event) => handleLogin(event)}>
+        <div>
+          <label htmlFor="username">Usuario</label>
+          <input
+            id="username"
+            type="text"
+            name="username"
+            placeholder="nombre de usuario"
+            value={Form.username}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="password">contraseña</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="aqui coloca tu contraseña"
+            value={Form.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Iniciar sesion</button>
+        </div>
+        <a href="/Register">Registrarte</a>
+      </form>
+    </main>
   );
 };
