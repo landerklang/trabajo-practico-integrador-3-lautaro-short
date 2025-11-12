@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { PublicRoutes } from "./PublicRouter.jsx";
 import { PrivateRoutes } from "./PrivateRouter.jsx";
 import { LoginPages } from "../pages/auth/LoginPages.jsx";
+import { RegisterPages } from "../pages/auth/RegisterPages.jsx";
 
 export const AppRouter = () => {
   return (
@@ -13,7 +14,7 @@ export const AppRouter = () => {
         <Route path="/" element={<Navigate to="/Login" />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path="/Home" element={<HomePage />} />
+        <Route path="/Home" element />
         <Route path="/Tasks" element />
         <Route path="/Profile" element />
         <Route path="*" element={<Navigate to="/Home" />} />

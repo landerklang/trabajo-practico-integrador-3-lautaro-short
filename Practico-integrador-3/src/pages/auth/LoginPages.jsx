@@ -14,7 +14,7 @@ export const LoginPages = () => {
   return (
     <form
       onSubmit={(event) => {
-        handleSubmit(event, navigate("/home"), handleLogin());
+        handleSubmit(event, navigate("/Home"), handleLogin());
       }}
     >
       <div>
@@ -33,9 +33,10 @@ export const LoginPages = () => {
           onChange={handleChange}
         />
         <button type="submit" onChange={handleReset}>
-          submit
+          Iniciar sesion
         </button>
       </div>
+      <a href="/Register">Registrarte</a>
     </form>
   );
 };
