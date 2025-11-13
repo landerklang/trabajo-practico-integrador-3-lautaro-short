@@ -7,6 +7,7 @@ export const Navbar = () => {
     const navigate = useNavigate();
     return navigate("/login");
   };
+
   return IsLogged ? (
     <nav>
       <Link to="/Home">Home</Link>

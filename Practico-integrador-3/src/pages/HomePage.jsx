@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer.jsx";
 
 export const HomePage = () => {
   const [home, sethome] = useState(null);
