@@ -18,26 +18,27 @@ export const LoginPage = () => {
       const res = await fetch("http://localhost:4000/api/login", {
         method: "POST",
         body: JSON.stringify(Form),
-        headers: { "Content-type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
       const data = await res.json();
       if (!data.ok) {
-        return alert(data.message);
+        return alert(data.message), handleReset();
       }
-      logged = localStorage.setItem("isLogged", "true");
-
-      navigate("/Home");
+      localStorage.setItem("isLogged", "true"), navigate("/Home");
     } catch (error) {
-      return alert("error al iniciar sesion");
+      return (
+        alert("error al iniciar sesion"), console.log(error), handleReset()
+      );
     } finally {
-      setloading(false);
+      await new Promise((resolver) => setTimeout(resolver, 2000)),
+        setloading(false);
     }
   };
   return (
     <main>
       {loading && <Loading />}
-      <form onSubmit={(event) => handleLogin(event)}>
+      <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="username">Usuario</label>
           <input
