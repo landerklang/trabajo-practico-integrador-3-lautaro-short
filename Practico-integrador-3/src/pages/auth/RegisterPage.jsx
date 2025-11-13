@@ -38,7 +38,7 @@ export const RegisterPage = () => {
         return alert(data.message), handleReset();
       }
       localStorage.setItem("isLogged", "true"),
-        navigate("/Home", { replace: true });
+        navigate("/Login", { replace: true });
     } catch (error) {
       return alert("error al registrarte"), console.log(error), handleReset();
     } finally {

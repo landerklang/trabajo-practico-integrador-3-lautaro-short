@@ -7,8 +7,11 @@ export const ProfilePage = () => {
     return navigate("/login");
   };
   return (
-    <div>
-      <h1>hola</h1>
-    </div>
+    <>
+      <h1>este es el perfil de </h1>
+      <h1>id:</h1>
+      <h1>Nombre:</h1>
+      <h1>Apellido:</h1>
+    </>
   );
 };
