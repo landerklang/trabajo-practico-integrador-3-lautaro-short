@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hook/useForm";
 import { useState } from "react";
 import { Loading } from "../../components/Loading";
+import { Footer } from "../../components/Footer";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
@@ -113,6 +114,7 @@ export const RegisterPage = () => {
           <a href="/Login">¿Ya tenes una cuenta?</a>
         </form>
       )}
+      <Footer />
     </main>
   );
 };
