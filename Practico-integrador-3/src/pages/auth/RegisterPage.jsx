@@ -35,7 +35,7 @@ export const RegisterPage = () => {
         credentials: "include",
       });
       const data = await res.json();
-      if (!data.ok) {
+      if (!data) {
         return alert(data.message), handleReset();
       }
       await new Promise((resolver) => setTimeout(resolver, 2000)),

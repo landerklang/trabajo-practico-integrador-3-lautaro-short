@@ -19,7 +19,7 @@ export const PostTasksPages = () => {
       });
       const data = await res.json();
       console.log(data);
-      if (!data.ok) {
+      if (!data) {
         return alert(data.message), handleReset();
       }
       await new Promise((resolver) => setTimeout(resolver, 2000)),

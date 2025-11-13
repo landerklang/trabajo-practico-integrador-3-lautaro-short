@@ -10,11 +10,11 @@ export const HomePage = () => {
       const res = await fetch("http://localhost:4000/api/profile", {
         credentials: "include",
       });
-      if (res.ok) {
+      if (!res) {
+        console.log("error al cargar el nombre de usurio");
+      } else {
         const data = await res.json();
         sethome(data.user);
-      } else {
-        console.log("error al cargar el nombre de usurio");
       }
     } catch (error) {
       alert("error del servidor", error);
@@ -25,12 +25,12 @@ export const HomePage = () => {
       const tasks = await fetch("http://localhost:4000/api/tasks-by-user", {
         credentials: "include",
       });
-      if (tasks.ok) {
+      if (!tasks) {
+        console.log("no se pudo estraer ninguna tarea");
+      } else {
         const data = await tasks.json();
         setTasks(data);
         console.log(data);
-      } else {
-        console.log("no se pudo estraer ninguna tarea");
       }
     } catch (error) {
       alert("error del servidor", error);
