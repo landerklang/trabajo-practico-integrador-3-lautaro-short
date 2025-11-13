@@ -5,6 +5,8 @@ import { LoginPage } from "../pages/auth/LoginPage.jsx";
 import { RegisterPage } from "../pages/auth/RegisterPage.jsx";
 import { ProfilePage } from "../pages/ProfilePages.jsx";
 import { HomePage } from "../pages/HomePage.jsx";
+import { TasksPage } from "../pages/TasksPage.jsx";
+import { PostTasksPages } from "../pages/PostTasksPages.jsx";
 
 export const AppRouter = () => {
   return (
@@ -17,8 +19,9 @@ export const AppRouter = () => {
       </Route>
       <Route element={<PrivateRoutes />}>
         <Route path="/Home" element={<HomePage />} />
-        <Route path="/Tasks" element />
+        <Route path="/Tasks" element={<TasksPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/CreatedTasks" element={<PostTasksPages />} />
         <Route path="*" element={<Navigate to="/Home" />} />
         <Route path="/" element={<Navigate to="/Home" />} />
       </Route>
