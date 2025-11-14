@@ -7,6 +7,7 @@ import { ProfilePage } from "../pages/ProfilePages.jsx";
 import { HomePage } from "../pages/HomePage.jsx";
 import { TasksPage } from "../pages/TasksPage.jsx";
 import { PostTasksPages } from "../pages/PostTasksPages.jsx";
+// import { PutTasksPages } from "../pages/PutTasksPages.jsx";
 
 export const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ export const AppRouter = () => {
         <Route path="/Tasks" element={<TasksPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/CreatedTasks" element={<PostTasksPages />} />
+        {/* <Route path="/PutTasks" element={<PutTasksPages />} /> */}
         <Route path="*" element={<Navigate to="/Home" />} />
         <Route path="/" element={<Navigate to="/Home" />} />
       </Route>

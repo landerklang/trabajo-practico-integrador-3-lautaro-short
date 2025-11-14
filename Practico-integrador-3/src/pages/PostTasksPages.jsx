@@ -22,6 +22,7 @@ export const PostTasksPages = () => {
       if (!data) {
         return alert(data.message), handleReset();
       }
+      alert("se creo con exito la tarea");
       await new Promise((resolver) => setTimeout(resolver, 2000)),
         navigate("/Tasks");
     } catch (error) {

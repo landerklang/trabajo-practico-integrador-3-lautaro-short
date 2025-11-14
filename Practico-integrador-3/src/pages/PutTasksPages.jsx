@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../hook/useForm.js";
+import { useEffect, useState } from "react";
 
-export const TasksPage = () => {
-  const [Tasks, setTasks] = useState([]);
-  const { Form, setForm, handleReset } = useForm({
+export const PutTasksPages = () => {
+  const { Form, setForm, handleChange, handleReset } = useForm({
     title: "",
     description: "",
     is_completed: false,
   });
+  const [Tasks, setTasks] = useState([]);
+  const [SelectTask, SetSelectTask] = useState(null);
+
+  const navigate = useNavigate();
 
   const FetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:4000/api/tasks-by-user", {
+      const tasks = await fetch("http://localhost:4000/api/tasks-by-user", {
         credentials: "include",
       });
-      if (!res) {
+      if (!tasks) {
         console.log("no se pudo estraer ninguna tarea");
       } else {
-        const data = await res.json();
+        const data = await tasks.json();
         setTasks(data);
         console.log(data);
       }
@@ -25,19 +29,20 @@ export const TasksPage = () => {
       alert("error del servidor", error);
     }
   };
+
   const handleSelectChange = (event) => {
     const id = event.target.value;
     // console.log(id);
     if (id === "") {
       // opción “ninguna tarea”
-      setTasks(null);
+      SetSelectTask(null);
       handleReset();
       return;
     }
 
     const task = Tasks.find((t) => t.id === Number(id));
 
-    se(task);
+    SetSelectTask(task);
 
     setForm({
       title: task.title,
@@ -45,6 +50,21 @@ export const TasksPage = () => {
       is_completed: task.is_completed,
     });
   };
+
+  const handleUpdate = async (event) => {
+    event.preventDefault();
+
+    const res = await fetch(
+      `http://localhost:4000/api/tasks/${SelectTask.id}`,
+      {
+        method: "PUT",
+        credentials: "include",
+        body: JSON.stringify(Form),
+        headers: { "Content-Type": "" },
+      }
+    );
+  };
+
   useEffect(() => {
     FetchTasks();
   }, []);
