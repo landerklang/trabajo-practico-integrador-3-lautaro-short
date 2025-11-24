@@ -69,7 +69,6 @@ export const HomePage = () => {
         </div>
 
         {/* Footer */}
-        <Footer />
       </div>
     </div>
   );

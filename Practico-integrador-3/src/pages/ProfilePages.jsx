@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Footer } from "../components/Footer";
 
 export const ProfilePage = () => {
   const [Profile, setProfile] = useState(null);

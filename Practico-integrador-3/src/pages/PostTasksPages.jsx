@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../hook/useForm.js";
+import { Footer } from "../components/Footer.jsx";
 
 export const PostTasksPages = () => {
   const { Form, handleChange, handleReset } = useForm({
