@@ -34,8 +34,9 @@ export const TasksPage = () => {
         <Loading />
       ) : (
         <div>
-          <a href="/CreatedTasks">crear una tarea</a>
-          <a href="/PutTasks">editar tareas</a>
+          <a href="/CreatedTasks">Crear una tarea</a>
+          <a href="/PutTasks">Editar tareas</a>
+          <a href="/DeletedTasks">Eliminar tarea</a>
           {Tasks?.length === 0 ? (
             <p>El usuario no tiene ninguna tarea hecha </p>
           ) : (

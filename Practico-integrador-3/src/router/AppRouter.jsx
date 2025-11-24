@@ -8,6 +8,7 @@ import { HomePage } from "../pages/HomePage.jsx";
 import { TasksPage } from "../pages/TasksPage.jsx";
 import { PostTasksPages } from "../pages/PostTasksPages.jsx";
 import { PutTasksPages } from "../pages/PutTasksPages.jsx";
+import { DeletedTasksPages } from "../pages/DeletedTasksPages.jsx";
 // import { PutTasksPages } from "../pages/PutTasksPages.jsx";
 
 export const AppRouter = () => {
@@ -25,7 +26,7 @@ export const AppRouter = () => {
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/CreatedTasks" element={<PostTasksPages />} />
         <Route path="/PutTasks" element={<PutTasksPages />} />
-        {/* <Route path="/PutTasks" element={<PutTasksPages />} /> */}
+        <Route path="/DeletedTasks" element={<DeletedTasksPages />} />
         <Route path="*" element={<Navigate to="/Home" />} />
         <Route path="/" element={<Navigate to="/Home" />} />
       </Route>
