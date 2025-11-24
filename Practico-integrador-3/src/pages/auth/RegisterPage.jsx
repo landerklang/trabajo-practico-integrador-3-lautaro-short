@@ -49,71 +49,122 @@ export const RegisterPage = () => {
     }
   };
   return (
-    <main>
+    <main className="min-h-screen flex flex-col justify-between bg-gray-100">
       {loading ? (
-        <Loading />
+        <div className="flex justify-center items-center h-screen">
+          <Loading />
+        </div>
       ) : (
-        <form onSubmit={handleRegistre}>
-          <div>
-            <input
-              id="username"
-              type="text"
-              name="username"
-              placeholder="Nombre de usuario"
-              value={Form.username}
-              onChange={handleChange}
-              required
-            />
-            <input
-              id="email"
-              type="email"
-              name="email"
-              placeholder="Correo eletronico"
-              value={Form.email}
-              onChange={handleChange}
-              required
-            />
-            <input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              value={Form.password}
-              onChange={handleChange}
-              required
-            />
-            <input
-              id="firstname"
-              type="text"
-              name="firstname"
-              placeholder="Primer nombre"
-              value={Form.firstname}
-              onChange={handleChange}
-              required
-            />
-            <input
-              id="lastname"
-              type="text"
-              name="lastname"
-              placeholder="apellido"
-              value={Form.lastname}
-              onChange={handleChange}
-              required
-            />
-            <input
-              id="dni"
-              type="text"
-              name="dni"
-              placeholder="dni"
-              value={Form.dni}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit">Registrarte</button>
-          </div>
-          <a href="/Login">¿Ya tenes una cuenta?</a>
-        </form>
+        <div className="flex flex-col items-center justify-center flex-1 px-4">
+          <form
+            onSubmit={handleRegistre}
+            className="w-full max-w-md bg-white p-6 rounded-2xl shadow-md space-y-4"
+          >
+            <h1 className="text-2xl font-semibold text-center text-gray-800">
+              Crear cuenta
+            </h1>
+
+            <div className="grid grid-cols-1 gap-3">
+              {/* USERNAME */}
+              <input
+                id="username"
+                type="text"
+                name="username"
+                placeholder="Nombre de usuario"
+                value={Form.username}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+
+              {/* EMAIL */}
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Correo electrónico"
+                value={Form.email}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+
+              {/* PASSWORD */}
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                value={Form.password}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+
+              {/* FIRST NAME */}
+              <input
+                id="firstname"
+                type="text"
+                name="firstname"
+                placeholder="Primer nombre"
+                value={Form.firstname}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+
+              {/* LAST NAME */}
+              <input
+                id="lastname"
+                type="text"
+                name="lastname"
+                placeholder="Apellido"
+                value={Form.lastname}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+
+              {/* DNI */}
+              <input
+                id="dni"
+                type="text"
+                name="dni"
+                placeholder="DNI"
+                value={Form.dni}
+                onChange={handleChange}
+                required
+                className="border rounded-lg px-3 py-2 outline-none
+              focus:ring-2 focus:ring-blue-500 transition"
+              />
+            </div>
+
+            {/* SUBMIT BUTTON */}
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded-lg
+            hover:bg-blue-700 transition font-medium mt-3
+            disabled:bg-gray-400 disabled:cursor-not-allowed"
+            >
+              Registrarte
+            </button>
+
+            {/* GO TO LOGIN */}
+            <p className="text-center text-gray-600 text-sm">
+              ¿Ya tenés una cuenta?
+              <a href="/Login" className="text-blue-600 hover:underline ml-1">
+                Iniciar sesión
+              </a>
+            </p>
+          </form>
+        </div>
       )}
+
       <Footer />
     </main>
   );
