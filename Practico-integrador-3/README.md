@@ -1,16 +1,10 @@
-# React + Vite
+el nombre del proyecto es:Practico-integrador-3
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+el profesor nos pidio que realizemos un trabajo integrador el cual consistia de agregar las funciones basicas de una pagina como el login y registro el home, pero debiamos de añadir las configuracio de las rutas privadas y publicas que se aprendieron en react asi como tambien realizar funciones que se realizaran directamente del back-end
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+intruciones de intalacion
+descomprimir la carpeta servidor  
+copiar el archivo env y eliminarle el example
+puede añadirle cualquier valor a cada uno de las varible de entorno menor el puerto ese colocale en 4000 si no generara error
+instalar el contenido del package.json tanto del back-end como del front-end
+y realizar el npm run dev en el back-end y front-end y listo con eso estaria todo
