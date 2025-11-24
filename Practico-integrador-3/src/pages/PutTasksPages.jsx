@@ -32,7 +32,7 @@ export const PutTasksPages = () => {
 
   const handleSelectChange = (event) => {
     const id = event.target.value;
-    // console.log(id);
+
     if (id === "") {
       // opción “ninguna tarea”
       SetSelectTask(null);
@@ -60,17 +60,22 @@ export const PutTasksPages = () => {
         method: "PUT",
         credentials: "include",
         body: JSON.stringify(Form),
-        headers: { "Content-Type": "" },
+        headers: { "Content-Type": "application/json" },
       }
     );
+    const data = await res.json();
+    if (!res) {
+      return alert(data.message), handleReset();
+    }
+    alert("tareas actualizadas");
+    navigate("/Tasks");
   };
 
   useEffect(() => {
     FetchTasks();
   }, []);
   return (
-    <div>
-      <a href="/CreatedTasks">crear una tarea</a>
+    <>
       <select onChange={handleSelectChange}>
         <option value="">Seleccionar tarea</option>
         {Tasks.map((task) => (
@@ -79,7 +84,40 @@ export const PutTasksPages = () => {
           </option>
         ))}
       </select>
-      {/* <a href="/PutTasks">editar una tarea</a> */}
-    </div>
+      <>
+        {SelectTask ? (
+          <div>
+            <h2>editar tarea</h2>
+
+            <form onSubmit={handleUpdate}>
+              <input
+                type="text"
+                name="title"
+                placeholder="titulo de la tarea"
+                value={Form.title}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="description"
+                placeholder="descripcion de la tarea"
+                value={Form.description}
+                onChange={handleChange}
+              />
+              <input
+                type="checkbox"
+                name="is_completed"
+                checked={Form.is_completed}
+                onChange={handleChange}
+              />
+              esta completo?
+              <button type="submit">{SelectTask ? "Actualizar" : ""}</button>
+            </form>
+          </div>
+        ) : (
+          <h1>seleccione una tarea para poder editarla</h1>
+        )}
+      </>
+    </>
   );
 };

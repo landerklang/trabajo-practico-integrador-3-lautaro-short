@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { useForm } from "../hook/useForm.js";
+import { Loading } from "../components/Loading";
 
 export const TasksPage = () => {
   const [Tasks, setTasks] = useState([]);
-  const { Form, setForm, handleReset } = useForm({
-    title: "",
-    description: "",
-    is_completed: false,
-  });
+  const [loading, setloading] = useState(false);
 
   const FetchTasks = async () => {
+    setloading(true);
     try {
       const res = await fetch("http://localhost:4000/api/tasks-by-user", {
         credentials: "include",
@@ -19,47 +16,42 @@ export const TasksPage = () => {
       } else {
         const data = await res.json();
         setTasks(data);
+        await new Promise((resolver) => setTimeout(resolver, 1000)),
+          setloading(false);
         console.log(data);
       }
     } catch (error) {
       alert("error del servidor", error);
     }
   };
-  const handleSelectChange = (event) => {
-    const id = event.target.value;
-    // console.log(id);
-    if (id === "") {
-      // opción “ninguna tarea”
-      setTasks(null);
-      handleReset();
-      return;
-    }
 
-    const task = Tasks.find((t) => t.id === Number(id));
-
-    se(task);
-
-    setForm({
-      title: task.title,
-      description: task.description,
-      is_completed: task.is_completed,
-    });
-  };
   useEffect(() => {
     FetchTasks();
   }, []);
   return (
-    <div>
-      <a href="/CreatedTasks">crear una tarea</a>
-      <select onChange={handleSelectChange}>
-        <option value="">Seleccionar tarea</option>
-        {Tasks.map((task) => (
-          <option key={task.id} value={task.id}>
-            {task.title}
-          </option>
-        ))}
-      </select>
-      {/* <a href="/PutTasks">editar una tarea</a> */}
-    </div>
+    <main>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div>
+          <a href="/CreatedTasks">crear una tarea</a>
+          <a href="/PutTasks">editar tareas</a>
+          {Tasks?.length === 0 ? (
+            <p>El usuario no tiene ninguna tarea hecha </p>
+          ) : (
+            <div>
+              <h1>listar tareas:</h1>
+              {Tasks.map((task) => (
+                <option key={task.id} value={task.id}>
+                  {task.title},{task.description}, estado:
+                  {task.is_completed ? "completado" : "pendiente"},
+                  {task.createdAt}
+                </option>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </main>
   );
 };
